@@ -22,7 +22,8 @@ public class ParkingLot {
     public Ticket park(Car car) {
         // 1.判断停车场是否有足够的位置
         if (parkingPlace.size() >= size) {
-            return null;
+            //return null;
+            throw new ParkingLotException("停车失败");
         }
         Ticket ticket = new Ticket();
         parkingPlace.put(ticket, car);

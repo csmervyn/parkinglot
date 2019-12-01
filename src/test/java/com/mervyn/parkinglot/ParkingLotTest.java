@@ -22,14 +22,13 @@ public class ParkingLotTest {
         Assert.assertNotNull(ticket);
     }
 
-    @Test
+    @Test(expected = ParkingLotException.class)
     public void testParkFail() {
         IntStream.range(0, 100).forEach(i -> {
             Car car = new Car("car-" + i);
             Ticket ticket = parkingLot.park(car);
         });
         Ticket ticket = parkingLot.park(new Car("car-101"));
-        Assert.assertNull(ticket);
     }
 
     @Test
