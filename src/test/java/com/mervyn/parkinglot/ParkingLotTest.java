@@ -16,14 +16,14 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void testParkSuccess() {
+    public void should_given_one_car_when_parking_lot_empty_then_return_ticket() {
         Car car = new Car("car-1");
         Ticket ticket = parkingLot.park(car);
         Assert.assertNotNull(ticket);
     }
 
     @Test(expected = ParkingLotException.class)
-    public void testParkFail() {
+    public void should_given_one_car_when_parking_lot__not_empty_then_return_exception() {
         IntStream.range(0, 100).forEach(i -> {
             Car car = new Car("car-" + i);
             Ticket ticket = parkingLot.park(car);
@@ -32,15 +32,15 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void testPickSuccess() {
+    public void should_given_one_ticket_when_parking_park_then_return_car() {
         Car car = new Car("car-1");
         Ticket ticket = parkingLot.park(car);
         Car mycar = parkingLot.pick(ticket);
         Assert.assertEquals(car, mycar);
     }
 
-    @Test
-    public void testPickFail() {
+    @Test(expected = ParkingLotException.class)
+    public void should_given_invalid_ticket_when_not_park_then_return_exception() {
         Car mycar = parkingLot.pick(new Ticket());
         Assert.assertNull(mycar);
     }
