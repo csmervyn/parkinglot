@@ -3,7 +3,7 @@ package com.mervyn.parkinglot;
 
 import java.util.HashMap;
 
-public class ParkingLot {
+public class ParkingLot implements Parking{
     private String name;
     private static int DEFAULT_SIZE = 100;
     private int size;
@@ -28,6 +28,7 @@ public class ParkingLot {
         this(name,DEFAULT_SIZE);
     }
 
+    @Override
     public Ticket park(Car car) {
         // 1.判断停车场是否有足够的位置
         if (parkingPlace.size() >= size) {
@@ -51,6 +52,7 @@ public class ParkingLot {
         this.name = name;
     }
 
+    @Override
     public Car pick(Ticket ticket){
         Car car = parkingPlace.remove(ticket);
         if (car == null){
