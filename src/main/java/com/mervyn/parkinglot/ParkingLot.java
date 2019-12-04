@@ -57,6 +57,14 @@ public class ParkingLot implements Parking{
         this.name = name;
     }
 
+    public double vacancyRate(){
+        if (size == 0){
+            throw new ParkingLotException("size 不能为0");
+        }
+        return 1 - parkingPlace.size() / (size + 0.0);
+    }
+
+
     @Override
     public Car pick(Ticket ticket){
         Car car = parkingPlace.remove(ticket);
