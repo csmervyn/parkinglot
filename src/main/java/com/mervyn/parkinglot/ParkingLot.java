@@ -2,6 +2,7 @@ package com.mervyn.parkinglot;
 
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ParkingLot implements Parking{
     private String name;
@@ -26,6 +27,10 @@ public class ParkingLot implements Parking{
 
     public ParkingLot(String name) {
         this(name,DEFAULT_SIZE);
+    }
+
+    public int emptyCount(){
+        return size - parkingPlace.size();
     }
 
     @Override
@@ -59,5 +64,19 @@ public class ParkingLot implements Parking{
             throw new ParkingLotException("无效凭证");
         }
         return car;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingLot that = (ParkingLot) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(parkingPlace, that.parkingPlace);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, parkingPlace);
     }
 }
