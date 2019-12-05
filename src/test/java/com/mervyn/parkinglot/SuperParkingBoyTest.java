@@ -31,9 +31,13 @@ public class SuperParkingBoyTest {
 
         Car car0 = new Car("car-0");
         Ticket ticket0 = superParkingBoy.park(car0);
+        Car car1 = new Car("car-1");
+        Ticket ticket1 = superParkingBoy.park(car1);
+        Car car2 = new Car("car-1");
+        Ticket ticket2 = superParkingBoy.park(car2);
 
-        Car mycar = parkingLot3.pick(ticket0);
-        Assert.assertEquals(mycar,car0);
+        Car mycar = parkingLot3.pick(ticket2);
+        Assert.assertEquals(mycar,car2);
     }
 
     @Test
